@@ -1,5 +1,6 @@
 ## Hola!, soy Alejando 👋
-![_6ab6acac-ab8b-4a20-8636-60f48f009436](https://github.com/Zoimback/Zoimback/assets/65066156/83f28c63-df12-4885-8751-490e2a97c3b7)
+
+![39633-ambiente-tierra-la_atmosfera_de_la_tierra-espacio-satelite-3840x2160](https://github.com/Zoimback/Zoimback/assets/65066156/6b61e4eb-9951-47b8-971d-75e201884afe)
 
 <!--
 **Zoimback/Zoimback** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
