@@ -13,7 +13,6 @@
 <!-- Badges de presentación -->
 <p align="center">
   <a href="https://github.com/Zoimback"><img src="https://komarev.com/ghpvc/?username=zoimback&label=Visitantes&color=667eea&style=for-the-badge" alt="Profile Views"/></a>
-  <img src="https://img.shields.io/badge/Ubicación-Madrid,%20España-667eea?style=for-the-badge&logo=google-maps&logoColor=white" alt="Location"/>
   <img src="https://img.shields.io/badge/Foco-DevOps%20%26%20Automation-764ba2?style=for-the-badge&logo=rocket&logoColor=white" alt="Focus"/>
 </p>
 
