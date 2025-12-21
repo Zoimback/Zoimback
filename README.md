@@ -1,11 +1,11 @@
 <!-- Banner animado con wave -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:667eea,100:764ba2&height=200&section=header&text=Alejandro%20Rodríguez&fontSize=50&fontColor=fff&animation=twinkling&fontAlignY=35&desc=DevOps%20Engineer%20|%20Automation%20|%20Cloud&descAlignY=55&descSize=18" width="100%"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:667eea,100:764ba2&height=200&section=header&text=Alejandro%20Rodr%C3%ADguez&fontSize=50&fontColor=fff&animation=twinkling&fontAlignY=35&desc=DevOps%20Engineer%20|%20Automation%20|%20Cloud&descAlignY=55&descSize=18" width="100%"/>
 </p>
 
 <!-- Texto animado de typing -->
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=3000&pause=1200&color=667EEA&center=true&vCenter=true&width=800&lines=👋+Hola!+Bienvenido+a+mi+perfil;🚀+DevOps+Engineer+%26+Automation+Specialist;🐍+Python+|+Groovy+|+Bash+|+Jenkins;☁️+Docker+|+GitLab+|+Cloud+Engineering;🦀+Actualmente+aprendiendo+Rust" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=3000&pause=1200&color=667EEA&center=true&vCenter=true&width=800&lines=%F0%9F%91%8B%20Hola%21%20Bienvenido%20a%20mi%20perfil%0A%F0%9F%9A%80%20DevOps%20Engineer%20%26%20Automation%20Specialist%0A%F0%9F%90%8D%20Python%20%7C%20Groovy%20%7C%20Bash%20%7C%20Jenkins%0A%E2%98%81%EF%B8%8F%20Docker%20%7C%20GitLab%20%7C%20Cloud%20Engineering%0A%F0%9F%A6%80%20Actualmente%20aprendiendo%20Rust" alt="Typing SVG" />
 </p>
 
 <br/>
