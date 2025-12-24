@@ -5,7 +5,7 @@
 
 <!-- Texto animado de typing -->
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=3000&pause=1200&color=667EEA&center=true&vCenter=true&width=800&lines=👋+Hola!+Bienvenido+a+mi+perfil;🚀+DevOps+Engineer+%26+Automation+Specialist;🐍+Python+|+Groovy+|+Bash+|+Jenkins;☁️+Docker+|+GitLab+|+Cloud+Engineering;🦀+Actualmente+aprendiendo+Rust" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=3000&pause=1200&color=667EEA&center=true&vCenter=true&width=800&lines=%F0%9F%91%8B+Hola%21+Bienvenido+a+mi+perfil;%F0%9F%9A%80+DevOps+Engineer+%26+Automation+Specialist;%F0%9F%90%8D+Python+%7C+Groovy+%7C+Bash+%7C+Jenkins;%E2%98%81%EF%B8%8F+Docker+%7C+GitLab+%7C+Cloud+Engineering;%F0%9F%A6%80+Actualmente+aprendiendo+Rust" alt="Typing SVG" />
 </p>
 
 <br/>
