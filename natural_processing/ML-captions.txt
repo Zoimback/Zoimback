@@ -1,0 +1,183 @@
+(Transcrito por TurboScribe.ai. Actualizar a Ilimitado para eliminar este mensaje.)
+
+(0:00 - 0:15)
+Hola a todos y bienvenidos a la última unidad. Vamos a aprender sobre el aprendizaje de máquinas y el procesamiento de lenguaje natural. El aprendizaje de máquinas ha reemplazado técnicas antiguas en casi cada área en NLP.
+
+(0:16 - 0:37)
+Aunque eso no significa que ninguna de las técnicas antiguas que aprendiste antes ya no son usadas o no tienen ningún papel más. Eso no es el caso. Pero para muchos casos de uso, como la traducción y la generación de texto, las aprochas basadas en el aprendizaje de máquinas son definitivamente la manera de ir.
+
+(0:37 - 0:58)
+También vamos a ver cómo usar modelos transformadores de la manera que son usados hoy en día. Incluso si no los usamos directamente, ya vimos algunas aplicaciones de redes neuronales. Por ejemplo, obtener embedimientos de palabra en la última unidad y también parte del tagging de la palabra puede ser hecho usando redes neuronales.
+
+(1:01 - 1:27)
+De hecho, nuestros ejercicios de clasificación podrían haber beneficiado de las redes neuronales en lugar de usar una distancia cosínica como en la primera unidad. Pero hay otros casos de uso que en realidad corresponden muy bien a la aprocha basada en el aprendizaje de máquinas para el procesamiento de lenguaje natural. La traducción es definitivamente una de ellas.
+
+(1:28 - 2:04)
+La traducción estatística no se usa más que para tener modelos de base para comparar nuestros modelos de traducción usando el aprendizaje de máquinas o para simplificar los textos, como escribiendo resumenes o reemplazando palabras complejas con palabras más sencillas para que el texto sea más accesible a un espectro más amplio de audiencias. También podemos hacer respuesta a preguntas. Esto es relativamente relacionado con nuestro último ejercicio, que se trataba de recopilación de documentos.
+
+(2:05 - 2:16)
+Pero este problema es más específico. No estamos recopilando documentos. Estamos en realidad entendiendo documentos y luego respondiendo preguntas sobre los contenidos de estos documentos.
+
+(2:17 - 2:28)
+Es generación de texto. Todos estos problemas son sobre la generación de texto. No es clasificación, no es reconocimiento de entidades nombradas, ni nada de eso.
+
+(2:29 - 2:46)
+Generación de texto. Este problema es lo que propulsó y encorajó a investigadores de todo el mundo a poner un esfuerzo en desarrollar técnicas de aprendizaje de máquinas para el procesamiento de lenguaje natural. Las palabras normalmente son leídas de izquierda a derecha.
+
+(2:46 - 3:12)
+Y esto encorajó a muchos investigadores a empezar a usar redes neuronales recorridas para el procesamiento de lenguaje natural. Las redes neuronales recorridas, en realidad, son redes neuronales recorridas, pero para secuencias. En lugar de tener un único inicio, por lo que queremos predicar un único salto, tenemos una secuencia de inicios y queremos predicar una secuencia de saltos.
+
+(3:13 - 3:43)
+Normalmente, nuestra asumpción de que estos inicios, el hecho de que están en una secuencia, es importante, en el sentido de que el tercer elemento depende del primero y el segundo elemento. Un caso común de uso para las redes neuronales recorridas y el procesamiento de lenguaje natural es el predicar texto. Lo mismo que tenemos en nuestros teléfonos cuando estamos escribiendo un texto y tenemos algunas sugerencias de lo que podría ser el siguiente palabra.
+
+(3:43 - 4:42)
+Así que escribimos I.M. y nuestro predicador nos dice que la palabra más probable es I.M. Así que escribimos I.M. y nuestro predicador nos dice que la palabra más probable es I.M. Nuestra sugerencia es A. Sabemos aquí que la red neuronal no solo tiene la palabra actual, sino también una representación de todo lo que hemos visto hasta ahora. Está usando la combinación de la entrada y su memoria, llamada estado oculto, para producir la salto A. Finalmente, escribimos SUM y nuestro predicador es capaz de predicar que queremos escribir palabras. Se ha conseguido hacer eso porque no solo está obteniendo la suma de palabras, sino también recuerdando que procesó las palabras AM, I.M. y escribiendo.
+
+(4:44 - 4:57)
+Así que la combinación de estas dos cosas permitió que nuestra red neuronal recorrida predicara la palabra. Así es como muchos algoritmos de predicación de texto funcionan. Las redes neuronales recorridas, si son suficientemente pequeñas, son muy baratas para operar.
+
+(4:57 - 5:17)
+Tienen casi ningún espacio, especialmente para sentencias cortas, como veremos en los siguientes slides. Las redes neuronales recorridas fueron usadas para la traducción durante mucho tiempo. Y normalmente se implementaron en una variación de lo que vemos aquí.
+
+(5:17 - 5:54)
+En lugar de tener una red neuronal recorrida solo teniendo en cuenta las palabras que ya hemos visto, también tenemos otra red neuronal recorrida procesando la sentencia hacia atrás y dándonos contexto sobre las palabras que van después de las palabras que estamos procesando. Y luego, mezclamos la información que tenemos sobre el prefixo y el sufixo, junto con la palabra actual, para generar traducciones. Como veremos en los siguientes slides, cuando hablamos de transformadores, las redes neuronales recorridas son un poco exageradas.
+
+(5:55 - 6:11)
+Especialmente para problemas de secuencia a secuencia, que normalmente involucran la generación de texto cuando hablamos de procesamiento de lenguaje natural. Y veremos por qué. Pero como mencioné antes, aún las usamos para otros propósitos, como la predicación de texto.
+
+(6:12 - 6:25)
+Y aún funcionan muy bien para sentencias cortas. Las redes neuronales recorridas tienen muchos problemas. Y el primero de ellos es lo que se llama los gradientes desapareciendo y explotando.
+
+(6:26 - 7:08)
+En general, cuando estamos entrenando un modelo que intenta predicar algo, normalmente definimos una función de pérdida que nos da una noción de cuánto estamos perdiendo cuando intentamos predicar con respecto a un determinado set de datos. Y las redes neuronales, no sé si lo conocéis, pero todas las funciones de activación, como la tensión hiperbólica, la función softmax, como la función sigmoid y todas estas funciones, son diferenciables. Así que significa que puedes computar su derivativa en cualquier punto del domenio, o al menos en los que estamos interesados.
+
+(7:09 - 7:31)
+Eso significa que podemos usar gradientes para minimizar o maximizar funciones si todo es diferenciable, incluyendo la función de pérdida en nuestro contexto. Probablemente lo hiciste en algún curso de calculo, donde obtuviste una función y te pidieron que la minimicara, y solo obtuviste la derivativa y luego los ceros. Así que estamos haciendo algo similar aquí.
+
+(7:31 - 7:56)
+Estamos obteniendo, a través de computar derivativas para cada variable, algo que se llama el vector de gradiente, que nos da una dirección que deberíamos seguir si nuestro objetivo es minimizar la función. Si estamos aquí y obtenemos este gradiente, sabemos que si seguimos esta dirección y evaluamos la función, obtenemos algo más pequeño. Entonces el gradiente sería algo así hasta que terminemos atrapados aquí en un mínimo local.
+
+(7:57 - 8:13)
+Así es como las redes neuronales se entrenan, incluso hoy en día. El algoritmo general no ha cambiado tanto. Tiene variantes en el modo en que se ejecuta la búsqueda y tiene muchos parámetros, como la escala del vector de gradiente.
+
+(8:13 - 8:35)
+Las redes neuronales clásicas de recurso dependían de transformaciones muy simples. Tuviste tu ingreso aquí, tuviste tus métricas de peso, y luego tuviste lo mismo para tu unidad de recorrido, como el límite de la célula dentro del neurón. Esto normalmente incluía métricas de peso, y luego una manera de mantener el estado oculto.
+
+(8:36 - 8:55)
+Al combinar esto y también transformar este vector con estas métricas de peso, obtenemos el estado oculto nuevo y también la salida. Normalmente, una vez que tengas todo computado, normalmente aplicas una función de activación. Puede ser una tangencia hiperbólica, sigmoide o otras funciones.
+
+(8:55 - 9:24)
+Estas dos son las más comunes, debido a que son suaves y, por supuesto, diferenciables. La cosa es que cuando estamos entrenando o activando, por eso importa, la red neuronal, lo que estamos haciendo es un poco descargarlas. Notemos aquí que necesitamos computar todo esto antes de que podamos comenzar a computar la misma cosa para la segunda entrada, ya que la segunda entrada depende de la primera entrada.
+
+(9:25 - 9:40)
+Normalmente terminamos con algo así, ¿verdad? Aquí no tenemos un estado oculto. Consideremos que es cero. Nuestra entrada solo depende de la entrada, la transformación que estamos aplicando a ella, el vector VIA, que normalmente significa vector de constantes.
+
+(9:40 - 10:31)
+Y para la segunda entrada, es casi lo mismo, pero aquí ya tenemos un estado oculto, que es el resultado anterior. Si definimos una función de pérdidas aquí, como esta, que es común y se llama error de cuadros de medio, que es el medio de los cuadros, de las diferencias entre lo que predijimos y los valores actuales para nuestro set de datos de entrenamiento, entonces el gradiente de la pérdida total con respecto a la última entrada sería la derivativa de esta función con respecto a la segunda entrada. Y esto es muy sencillo de computar, es como si estuviéramos haciendo la derivativa aquí, así que esto es una constante, así que el exponente va allí multiplicando, y como tenemos un medio aquí, se cancela y terminamos.
+
+(10:32 - 11:13)
+Pero el problema aquí es que también tenemos que computar cómo la pérdida cambia en función de la primera entrada, y también en función de la cantidad de pérdidas. Y como la primera entrada depende de la segunda entrada aplicando la regla de la cadena, tenemos que terminar multiplicando cómo la segunda entrada cambia con respecto a la primera entrada. En general, si seguimos procesando secuencias más largas y más largas, vamos a terminar con gradientes enormes o muy pequeños, ya que vamos a hacer un número que aumenta o disminuye exponencialmente.
+
+(11:14 - 11:44)
+Este problema no lo voy a investigar muy profundamente, pero fue resolvido por especiales neuronas o unidades llamadas LSTMs, memorias a largo y corto plazo, o unidades de recorrido encendido. Para resumir, estas unidades permiten a las redes neuronales encendidas saber qué recordar y qué olvidar de su estado de recorrido. Y también, especialmente durante el entrenamiento, otras técnicas se aplicaron, como obtener un gradiente y escalarlo.
+
+(11:44 - 12:12)
+Si obtenemos un vector de gradiente, lo único que nos importa es la dirección. Entonces, si lo normalizamos, o al menos lo hacemos más corto mientras mantenemos la dirección, todavía podemos entrenar nuestro modelo más o menos correctamente y evitar muchos de los problemas causados por el desaparecimiento y los gradientes encendidos. Especialmente los gradientes encendidos en este último caso.
+
+(12:13 - 12:51)
+El problema, sin embargo, es que estas técnicas mitigaron el problema un poco, pero no solucionaron completamente el problema. Especialmente el problema implícito de que este modelo de recordar los últimos estados tiende a beneficiar las inputes recientes. Así que, incluso con LSTMs y unidades de recorrido encendidas, en secuencias largas, los términos que están muy lejos de nuestro término actual tienden a ser olvidados o no tomados en cuenta, incluso si hace sentido tomarlos en cuenta, ya que explican mucho por qué nuestro término actual aparece allí.
+
+(12:51 - 13:17)
+Y el segundo problema es que las redes neurales recorridas son lentas. Necesitamos enrollar las redes neurales recorridas, tanto para entrenamiento como para las predicciones. Así que, incluso si tenemos un gran clúster consistente de muchas GPUs, no nos van a ayudar mucho, ya que las redes neurales recorridas son secuenciales por su propia naturaleza.
+
+(13:18 - 13:55)
+Entonces, ¿qué se usa hoy en día? ¿Qué revolucionó el procesamiento de lenguaje natural en los últimos años? Se llaman modelos transformadores, y son la tecnología actual para la mayoría de las tareas de procesamiento de lenguaje natural. La solución óptima probablemente sea un modelo transformador, si no te importan los costos relacionados con el poder de computación, energía, agua y cosas así. Si no te importan ninguno de ellos, definitivamente ningún modelo transformador realizará ninguna técnica antigua.
+
+(13:57 - 14:24)
+Y, por supuesto, realizarán, por lo tanto, las redes neurales recorridas, especialmente cuando hablamos de generación de texto. Y es basado en dos conceptos clave, quizás tres, en realidad. En encodijos posicionales, estamos encodiendo toda la frase al mismo tiempo, pero también de tal manera que todavía estamos conscientes de la posición de cada token.
+
+(14:24 - 14:57)
+Y también algo que se llama atención a sí misma, que vamos a ver en algunos slides. Pero, al menos en mi opinión, lo que hizo los modelos transformadores tan poderosos y tan prevalentes en la escena NLP actual es el hecho de que pueden explotar paralelamente mucho. Y podrías haber notado que empresas como NVIDIA, que producen GPUs, empezaron a hacer mucho dinero en los últimos, digamos, 5-8 años.
+
+(14:57 - 15:25)
+Y esto no es solo debido a algunas cosas relacionadas a materiales o gente de la criptomoneda comprando GPUs para minar Bitcoin. El aprendizaje de máquinas jugó un gran papel, especialmente gracias a los modelos transformadores, y vamos a ver por qué. Así que el artículo, el que presenta la arquitectura transformadora, se llama Atención es todo lo que necesitas, y es de investigación de Google.
+
+(15:27 - 15:48)
+Allí explica la arquitectura general de un modelo transformador que todavía se respeta y se usa casi en todos lugares. Tiene algunas variaciones, dependiendo del modelo, y algunas personas intentan experimentarlo añadiendo, removiendo o cambiando partes de él. Pero en general, todos los modelos siguen esta arquitectura de una manera u otra.
+
+(15:50 - 16:25)
+La primera idea, los encodings posicionales. Como mencioné antes, ahora que tenemos muchas GPUs y el computador cloud es más accesible, bueno, tomo esto con un poco de sal, pero sí, es más accesible de lo que era antes. Ellos hicieron la idea de transformadores prácticos, incluso antes del artículo, algunas personas intentaron hacer esta cosa de procesar todas las secuencias y luego procesar todos los tokens en paralelo para producir la salida.
+
+(16:25 - 16:56)
+Antes era muy caro, muy lento, y requería un montón de poder de computación que era muy, muy caro, difícil de encontrar y mantener. Aún lo es, pero hoy en día es más accesible y incluso GPUs de nivel medio pueden hacer un buen trabajo entrenando modelos de transformadores. La idea, como mencioné, es que aquí no es como si estuviéramos descargando algo y luego haciendo pasos secuenciales.
+
+(16:57 - 17:16)
+Aquí todo está descargado, pero todo funciona en paralelo. La mayoría de los modelos de transformadores, en lugar de relajarse en los encodings preestablecidos, normalmente entrenan sus propios encodings y podemos reutilizar los encodings aprendidos de modelos para obtener otros modelos. Y vamos a ver esto en un par de páginas cuando hablo de modelos preestablecidos.
+
+(17:16 - 17:31)
+Debido a que no estamos en una red recurrente y no tenemos un estado oculto más, todavía tenemos que tener en cuenta la posición de cada token. Aquí es obvio para nosotros. Podemos ver que este es el primer nombre y este es el segundo nombre.
+
+(17:32 - 18:16)
+Pero teniendo en cuenta que todas estas cosas son transformaciones lineares, funciones de activación, estamos añadiendo biases, estamos haciendo maxes suaves, así que no hay noción de posición a menos que la introduzcamos. Normalmente lo que hacemos aquí es que después de obtener los encodings del mundo, añadimos algunos vectores a estos encodings llamados encodings posicionales. Una cosa que es importante mencionar aquí es que la mayoría de los modelos de transformadores, incluso si aquí aparece ser un modelo SAP diferente o un modelo SAP fit-forward neural network para los encodings del mundo, en realidad estamos usando el mismo conjunto de vectores para cada mundo.
+
+(18:16 - 18:36)
+Cuando estamos entrenando los vectores para los encodings del mundo para obtener estas cosas, siempre estamos aplicando los mismos vectores. Estamos reutilizando el mismo modelo para cada token, sin importar su posición en la frase. Una vez que tengamos estos encodings, añadimos los encodings posicionales.
+
+(18:37 - 19:01)
+Así que al final obtenemos la adición de la embedding para el primer verbo más el vector posicional para el primer verbo y lo mismo para el segundo verbo. Recuerda que, incluso si este es el segundo verbo, todavía obtenemos la misma embedding. El truco aquí es aplicar funciones para garantizar que no sean exactamente iguales para todas las posiciones.
+
+(19:01 - 19:25)
+De lo que sé, la técnica más común para lograrlo es generar funciones sinusoidales randomizadas, para las que tenemos una garantía de que no serán iguales para todo su domenio. Nunca serán iguales los encodings posicionales. Y luego añadimos piezas de ello para cada posición.
+
+(19:25 - 19:50)
+Recuerda que al hacer esto hemos logrado convertir las embeddings inicialmente idénticas en dos vectores diferentes. Así que ahora obtenemos una noción de posición junto con la embedding del verbo. Y si recuerdas, Bert, el modelo de embedding preestablecido que mencioné en la última unidad, de lo que sé, lo hace.
+
+(19:53 - 20:28)
+Y la segunda idea, la atención a sí misma, que creo que es la idea más importante para los modelos de transformación. Estamos procesando toda la frase en paralelo al mismo tiempo. Si en cualquier momento tenemos todos los tokens procesados con la embedding del verbo y el encoding posicional, todos los tenemos disponibles, podemos considerar la idea de tratar de relacionar cada embedding procesado con los demás, para ver cuán relevantes son las embeddings para cada uno.
+
+(20:28 - 21:04)
+Lo que podemos hacer aquí es que si ya tenemos todo computado en paralelo, podemos intentar obtener una noción de cuán relevantes son los tokens para cada uno. Imagina aquí que tenemos esta frase, hola, ¿cómo estás? Y queremos saber cuán relevante es dar atención a palabras en la frase si estamos considerando la palabra hola. Podemos hacer una suma cuadrada, como lo hicimos con las embeddings de palabras y TF-IDF en la unidad anterior, y creo que esta idea viene de esta idea antigua que os he contado antes.
+
+(21:06 - 21:48)
+Es lo siguiente, es como obtener la embedding de palabras y luego multiplicarla por la similitud de cosines, que se implementa en dos capas, donde estamos computando un producto y luego lo normalizamos, ya que estas dos funciones separadas son fáciles de diferenciar. Podemos obtener una suma cuadrada de todos los tokens y saber cuán relevante cada token es para cada uno. Esto permite que los modelos transformadores aprendan dependencias dentro de una frase, pero en general y en el largo plazo, y si nuestro dataset es suficientemente grande, también puede aprender por sí mismo la estructura de una lengua.
+
+(21:49 - 22:14)
+Si el modelo es suficientemente grande y el dataset suficientemente bueno, puede aprender la estructura de cualquier lengua, y como todas las técnicas escolares para NLP, esto normalmente funciona para cada lengua del mundo. Tienen diferentes estructuras, pero todos dependen de otras palabras presentes en las frases. Este diagrama aquí es del papel de Atención es todo lo que necesitas.
+
+(22:15 - 22:40)
+Puedes verlo, pero está mostrando cuáles son las palabras relevantes para cada uno. El modelo aprendió que D se refiere a la ley, pero también aprendió cosas muy interesantes aquí. Es capaz de inferir que está hablando de la ley, como el tema de esta otra frase aquí.
+
+(22:41 - 23:04)
+Y el hecho de que hay algunas palabras que parecen depender demasiado de sí mismos, puede parecer inútil, pero en realidad no. Normalmente son objetos o entidades. También hacen un buen trabajo en prestar atención a los vectores de atención para realizar la reconocimiento de entidades llamadas usando el aprendizaje de máquinas.
+
+(23:05 - 23:23)
+Entonces, los modelos de transformadores, vas a encontrar muchas variantes de ellos. Solo voy a explicar un par o tres, pero van a seguir más o menos la misma idea de la arquitectura de encoder y decoder. Lo que vimos aquí era solo el encoder.
+
+(23:23 - 23:41)
+Estábamos obteniendo tokens, computando las embedidas, aplicando encoders posicionales, y luego obteniendo atención. Pero también puedes hacer el camino opuesto, como obtener la fuerza, y luego deshacer todo y producir tokens. Y eso se llama un decoder.
+
+(23:42 - 23:57)
+Como podrías haber imaginado, un encoder-decoder ofrece la salida de un encoder a un decoder. Puede generar sentencias, pero en general, secuencias. Pero si hablamos de procesamiento de lenguaje natural, normalmente son sentencias.
+
+(23:58 - 24:28)
+En casos específicos de modelos de transformadores, aunque hay casos potencialmente infinitos, es solo una cuestión de ser creativos aquí, puedes obtener arquitecturas de encoder como BERT. BERT fue inicialmente un encoder-decoder, pero solo se importaba con la parte de encoder. Como lo que hicimos con las embedidas de palabras no contextuales, como las embedidas de palabras rápidas que usamos en el ejercicio.
+
+(24:29 - 24:44)
+Obteniamos un gran modelo, pero solo se importaba con la primera caja donde obtuvimos las embedidas. BERT está entrenado usando una arquitectura de transformador. Uno podría decir que BERT es una arquitectura de encoder y no es nada más que encoder.
+
+(24:45 - 25:10)
+Y GPT, el chat-GPT, por ejemplo, es una arquitectura de encoder y no es nada más que implementar la parte de encoder de la arquitectura de encoder-decoder. Como podrías haber imaginado, los transformadores son muy grandes. Tienen millones o incluso billones de parámetros.
+
+(25:10 - 25:43)
+Son enormes. Normalmente necesitas mucho datos para evitar el desbordamiento, pero también necesitas mucho poder de computación que no es disponible para todos. Lo que la mayoría de la gente hace, y es lo que vamos a hacer aquí para evitar frustrar a todos con preguntas de objetivos irrealísticos y tareas irrealísticas o cosas que son imposibles de cumplir en tu computadora, es usar modelos pre-entrenados.
+
+(25:47 - 26:35)
+Si tienes un modelo pre-entrenado, puedes hacer una situación de entrenamiento con un dataset específico para entrenarlo o finalizarlo como se hace hoy en día. Puede ser que ya te han enseñado cualquier tarea para ti. Si ya tienes un modelo que ha aprendido a través de embeding de palabras y atención a sí misma la estructura de, digamos, la lengua inglesa, si puedes aprovechar este conocimiento, puedes usar datasets más pequeños para obtener resultados acurados para cualquier tarea, porque no tendrás que tener mucho datos para que tu modelo aprenda al mismo tiempo cómo funciona una lengua y cómo resolver tu problema.
+
+(26:36 - 27:20)
+Muchos transformadores operan en una sentencia Significa que obtienen sentencias de la misma longitud todo el tiempo y siempre producen sentencias de la misma longitud, así que normalmente necesitamos tokens especiales para indicar al modelo que estamos empezando o terminando una sentencia o que estamos simplemente llenando espacios vacíos que ya no nos importan. Por ejemplo, aquí sería la entrada y la salida de un modelo de traducción, de español a inglés. Si nuestra entrada era A los perros les gusta jugar pero el tamaño real de la sentencia para este modelo fue de 8, necesitamos agregar un carácter pad después del final de la sentencia.
+
+(27:21 - 29:58)
+Lo mismo sucede con perros que juegan, solo son 3 palabras al final de la sentencia y luego necesitamos 4 carácteres pad Solo lo estoy mencionando para que sepan pero normalmente no necesitas hacer nada manualmente ya tenemos muchas librerías tokenizadas y vamos a usar librerías tokenizadas en lugar de hacerlo manualmente Hay muchos ejemplos pero vamos a ir con el ejemplo de cómo usar un modelo transformador que vamos a trabajar en la actividad que es la respuesta a preguntas Normalmente nuestra entrada es una pregunta, un contexto el contexto es donde la respuesta es un texto grande y estamos preguntando sobre el texto porque estamos tratando de encontrar algo en el texto La salida es la respuesta a cualquier pregunta Por ejemplo, ¿Quién es el perro? Si el contexto es Genki es un perro y Shena es un perro, entonces la respuesta es Genki Normalmente lo que hacemos con modelos transformadores es encender la pregunta con el contexto concatenado y agregando un token separador que es otro token especial y la respuesta seguirá las mismas reglas palabras que nos importan fin de sentencia y luego pánico hasta sentir la longitud de la sentencia Pero ya tenemos modelos que saben cómo obtener embedimientos de palabras acurados y descriptivos para el lenguaje inglés y también tenemos modelos que entienden la estructura del lenguaje así que saben cuáles tokens son relevantes cuando procesamos parte de la sentencia Podemos simplemente obtener cualquier modelo preestablecido y usarlo para nuestra tarea Nuestro paso de entrenamiento será más eficiente ya que el modelo se centrará solo en aprender cómo responder preguntas pero no empieza de nuevo ya sabe mucho del lenguaje inglés así que la tarea será más fácil y el entrenamiento será más corto En general, lo que intento decir aquí es que usar modelos preestablecidos permite a personas como yo o vosotros, usar modelos que no han sido entrenados con mucho esfuerzo como Wikipedia toda la historia de algún subreddit o cientos de millones de tuits o posts de Facebook
+
+(Este archivo dura más de 30 minutos. Actualizar a Ilimitado en TurboScribe.ai para transcribir archivos de hasta 10 horas.)
